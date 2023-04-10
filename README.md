@@ -24,7 +24,9 @@ CUDA 설치가 안되어있고 GPU를 안(못)쓰실거면,
 make depend -j N_CPUS
 make -j N_CPUS
 
-
+### TIL
+230410 : sample dataset added
 ### ref
 - https://medium.com/@indra622/0-kaldi-asr-tutorial-b036b6dac26e - 칼디 install tutorial
 - https://medium.com/@indra622/1-kaldi-directory를-통한-전체-구조-설명-bb9107433945 - 칼디 architecture
+- https://hub.docker.com/r/quleyuan9826/deepspeech2-cuda9.0-pytorch - deepspeech2 docker image
