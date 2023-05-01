@@ -26,7 +26,11 @@ make -j N_CPUS
 
 ### TIL
 230410 : sample dataset added
+230413 : Training librispeech with deepspeech; working on Korean dataset preprocessing
+230415 : Still training trying to make demo 
+230430 : RF training
 ### ref
 - https://medium.com/@indra622/0-kaldi-asr-tutorial-b036b6dac26e - 칼디 install tutorial
 - https://medium.com/@indra622/1-kaldi-directory를-통한-전체-구조-설명-bb9107433945 - 칼디 architecture
 - https://hub.docker.com/r/quleyuan9826/deepspeech2-cuda9.0-pytorch - deepspeech2 docker image
+- https://todayisbetterthanyesterday.tistory.com/51 - RF sample
