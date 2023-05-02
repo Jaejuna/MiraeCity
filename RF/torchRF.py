@@ -8,8 +8,8 @@ os.getcwd()
 data = pd.read_csv("./otto_train.csv")
 data.head()
 
-nCar = data.shape[0] # 데이터 개수
-nVar = data.shape[1] # 변수 개수
+nCar = data.shape[0] 
+nVar = data.shape[1] 
 print('nCar: %d' % nCar, 'nVar: %d' % nVar )
 
 data= data.drop(['id'],axis=1)
