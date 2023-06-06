@@ -1,0 +1,12 @@
+*.csv
+*.zip
+*.txt
+*.wav
+*.json
+*.pkl
+*.ubj
+*.mp4
+*.jpg
+../SR/data/
+../SR/AutogluonModels/
+../gesture/data/
