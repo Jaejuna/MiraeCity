@@ -26,13 +26,13 @@ def seed_everything(seed):
 
 seed_everything(CFG['SEED']) # seed 고정
 
-#### data preprocessing
+""" #### data preprocessing
 def get_filelist(subfolder, file_extension):
     data_path = Path.cwd()/subfolder
     
     return list(data_path.glob('**/*' + file_extension))
 
-rootdir = '../JJJ/MM/New_Sample/라벨링데이터/TL/01.가전소음/02.청소기'
+rootdir = './data/ann'
 
 #### json handling
 # 이 파일이 위치해있는 폴더의 하위폴더 'data'에 있는 확장자명이 '.json'인 모든 파일을 불러옵니다
@@ -54,7 +54,7 @@ result.to_csv(Path.cwd()/'data'/'json_sample_category.csv', index=None)
 print(result.head(2)) #데이터가 잘 불러와지는지 확인하는 출력   
 
 ##### annotation organize -> json to csv
-rootdir = 'C:/Users/user/git/MiraeCity/JJJ/MM/New_Sample/라벨링데이터/TL/01.가전소음/02.청소기'
+rootdir = './data/ann'
 
 file_list = [f for f in os.scandir(rootdir) if f.is_file() and f.name.endswith('.json')]
 dataframes = []
@@ -75,7 +75,7 @@ for file in file_list:
 total_dataFrame = pd.concat(dataframes, ignore_index=True)
 
 # Save the DataFrame to CSV
-total_dataFrame.to_csv('C:/Users/user/git/MiraeCity/JJJ/MM/notebook/data/json_sample.csv', index=False) 
+total_dataFrame.to_csv('./data/ann.csv', index=False) 
 
 
 ##### annotation organize -> srt to csv
@@ -113,11 +113,11 @@ for filename in os.listdir(rootdir):
 df_all = pd.concat(dfs, ignore_index=True)
 
 # save the concatenated dataframe to a single CSV file
-df_all.to_csv('C:/Users/user/git/MiraeCity/JJJ/MM/notebook/data/jsom_sample_srt.csv', index=False)
+df_all.to_csv('./data/final.csv', index=False) """
 
 # mfcc & mel feature extract function
 ##### mfcc feature extract function
-rootdir = 'C:/Users/user/git/MiraeCity/SR/data/01.데이터/2.Validation/raw/VS_07.터미널/'
+rootdir = './data/raw'
 
 def get_mfcc_feature(df):
     features = []
@@ -183,3 +183,9 @@ def get_feature_mel(df):
     mel_min_df = pd.DataFrame(mel_df['mel_min'].tolist(), columns=[f'mel_min_{i}' for i in range(n_mels)])
 
     return pd.concat([mel_mean_df, mel_max_df, mel_min_df], axis=1)
+
+# train_mf = get_mfcc_feature(train_df)
+# train_mel = get_feature_mel(train_df)
+# train_x = pd.concat([train_mel, train_mf], axis=1)
+# train_x.to_csv('./data/train_data.csv', index=False)
+# train_data = TabularDataset(train_x)

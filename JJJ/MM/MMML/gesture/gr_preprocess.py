@@ -4,9 +4,9 @@ import pandas as pd
 from glob import glob
 from tqdm import tqdm  
 
-data_root = 'E:\\data\\01data\\1.Training\\original'
-ann_file_train = 'E:\\data\\new_train_ann.txt'
-output_path = 'E:\\data\\output.csv'
+data_root = './data/01data/1.Training/original'
+ann_file_train = './data/new_train_ann.txt'
+output_path = './data/output.csv'
 
 scales = [1, 0.875, 0.75, 0.66]
 
