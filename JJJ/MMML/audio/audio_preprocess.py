@@ -2,7 +2,6 @@ import random
 import pandas as pd
 import numpy as np
 import os
-import pysrt
 from tqdm.auto import tqdm
 from pathlib import Path
 
@@ -117,16 +116,16 @@ df_all.to_csv('./data/final.csv', index=False) """
 
 # mfcc & mel feature extract function
 ##### mfcc feature extract function
-rootdir = './data/raw'
+rootdir = './data/speech_total.csv'
 
 def get_mfcc_feature(df):
     features = []
-    for path in tqdm(df['mediaUrl'].astype(str)):
+    for path in tqdm(df['path'].astype(str)):
         full_path = os.path.join(rootdir, path)
         try:
             y, sr = librosa.load(full_path, sr=CFG['SR'])
         except FileNotFoundError:
-            #print(f"File {full_path} not found.")
+            print(f"File {full_path} not found.")
             continue
         mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=CFG['N_MFCC'])
         features.append({
@@ -150,7 +149,7 @@ def get_mfcc_feature(df):
 ##### mel feature extract function
 def get_feature_mel(df):
     features = []
-    for path in tqdm(df['mediaUrl'].astype(str)):
+    for path in tqdm(df['path'].astype(str)):
         full_path = os.path.join(rootdir, path)
         try:
             y, sr = librosa.load(full_path, sr=CFG['SR'])
@@ -184,8 +183,10 @@ def get_feature_mel(df):
 
     return pd.concat([mel_mean_df, mel_max_df, mel_min_df], axis=1)
 
-# train_mf = get_mfcc_feature(train_df)
-# train_mel = get_feature_mel(train_df)
-# train_x = pd.concat([train_mel, train_mf], axis=1)
-# train_x.to_csv('./data/train_data.csv', index=False)
+train_df = './data/speech_total.csv'
+
+train_mf = get_mfcc_feature(train_df)
+train_mel = get_feature_mel(train_df)
+train_x = pd.concat([train_mel, train_mf], axis=1)
+train_x.to_csv('./data/train_data.csv', index=False)
 # train_data = TabularDataset(train_x)
