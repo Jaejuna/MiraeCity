@@ -1,9 +1,13 @@
 from autogluon.tabular import TabularDataset, TabularPredictor
+import pandas as pd
+
+train_df = pd.read_csv('./final_1.csv')
+train_data = TabularDataset(train_df)
+time_limit = 3600 * 1 #hrs
 
 #### autogluon
 label = 'label'
 eval_metric = 'accuracy'
-time_limit = 3600 * 1 # hrs
 
 predictor = TabularPredictor(
     label=label, eval_metric=eval_metric
@@ -11,6 +15,3 @@ predictor = TabularPredictor(
 
 ### result (leaderboard)
 predictor.leaderboard(silent=True)
-
-# result (final csv shape)
-print(concatenated_df.shape)

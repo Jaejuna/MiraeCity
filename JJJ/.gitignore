@@ -12,3 +12,4 @@
 ../SR/AutogluonModels/
 ../gesture/data/
 ../.dockerfile
+/AutogluonModels
