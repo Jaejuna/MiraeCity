@@ -1,9 +1,9 @@
 from autogluon.tabular import TabularDataset, TabularPredictor
 import pandas as pd
 
-train_df = pd.read_csv('./final_drop.csv')
+train_df = pd.read_csv('./audio_df.csv')
 train_data = TabularDataset(train_df)
-time_limit = 3600 * 0.5 #hrs
+time_limit = 3600 * 0 #hrs
 
 #### autogluon
 label = 'label'

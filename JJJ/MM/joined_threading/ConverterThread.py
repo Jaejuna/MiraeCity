@@ -1,7 +1,7 @@
 import threading
 import queue
 
-class Converter:
+class ConverterThread:
 
     def __init__(self):
         self.input_queue = queue.Queue()
